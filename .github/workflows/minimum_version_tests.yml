@@ -1,0 +1,19 @@
+name: Minimum Version Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  downloader:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - run: pip install -e . --no-deps && pip install "PySide6==6.2.0" "yt-dlp==2021.01.07-1" "pytest==9.0.0" && pytest tests/test_downloader.py -v
+
