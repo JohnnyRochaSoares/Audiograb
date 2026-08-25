@@ -12,16 +12,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
-
-      - name: Install dependencies and package
-        run: |
-          pip install "PySide6==6.2.2" "yt-dlp==2021.01.20" "pytest==9.0.0"
-          pip install -e . --no-deps
-
-      - name: Run tests
-        run: pytest tests/test_downloader.py -v
+      - run: git clone https://github.com/JohnnyRochaSoares/Audiograb.git && cd Audiograb && pip install "PySide6==6.2.2" "yt-dlp==2021.01.20" "pytest==9.0.0" && pytest tests/test_downloader.py -v
 
