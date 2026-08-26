@@ -6,13 +6,16 @@ on:
 
 jobs:
   downloader:
+    runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+        yt_dlp_version: ["2021.1.16", "2021.6.1", "2022.1.21", "2022.6.22", "2023.1.2", "2023.6.22", "2024.1.1"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
-      - run: pip install -e . --no-deps && pip install "PySide6==6.2.2" "yt-dlp==2021.01.16" "pytest==6.2.4" && pytest tests/test_downloader.py -v
+      - run: pip install -e . --no-deps
+      - run: pip install "PySide6==6.2.2" "yt-dlp==${{ matrix.yt_dlp_version }}" "pytest==6.2.4"
+      - run: pytest tests/test_downloader.py -v
