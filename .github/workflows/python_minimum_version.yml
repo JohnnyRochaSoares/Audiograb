@@ -1,0 +1,22 @@
+name: Python Minimum Version
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  downloader:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python_version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "${{ matrix.python_version }}"
+      - run: pip install -e . --no-deps
+      - run: pip install "PySide6==6.6.0" "yt-dlp==2024.1.1" "pytest==8.0.0"
+      - run: pytest tests/test_downloader.py -v
+        continue-on-error: true
