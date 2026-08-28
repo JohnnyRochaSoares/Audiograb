@@ -21,7 +21,7 @@ jobs:
       - name: Run tests
         run: |
           if pytest tests/test_downloader.py -v; then
-            echo "PASS — yt-dlp ${{ matrix.yt_dlp_version }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "✅ **yt-dlp ${{ matrix.yt_dlp_version }}** — passed" >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "FAIL — yt-dlp ${{ matrix.yt_dlp_version }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "❌ **yt-dlp ${{ matrix.yt_dlp_version }}** — failed" >> "$GITHUB_STEP_SUMMARY"
           fi

@@ -21,7 +21,7 @@ jobs:
       - name: Run tests
         run: |
           if pytest tests/ -v; then
-            echo "PASS — PySide6 ${{ matrix.pyside6_version }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "✅ **PySide6 ${{ matrix.pyside6_version }}** — passed" >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "FAIL — PySide6 ${{ matrix.pyside6_version }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "❌ **PySide6 ${{ matrix.pyside6_version }}** — failed" >> "$GITHUB_STEP_SUMMARY"
           fi

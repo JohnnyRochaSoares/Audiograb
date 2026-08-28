@@ -21,7 +21,7 @@ jobs:
       - name: Run tests
         run: |
           if pytest tests/test_downloader.py -v; then
-            echo "PASS — pytest ${{ matrix.pytest_version }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "✅ **pytest ${{ matrix.pytest_version }}** — passed" >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "FAIL — pytest ${{ matrix.pytest_version }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "❌ **pytest ${{ matrix.pytest_version }}** — failed" >> "$GITHUB_STEP_SUMMARY"
           fi
