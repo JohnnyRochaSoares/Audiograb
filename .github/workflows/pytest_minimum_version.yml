@@ -18,5 +18,10 @@ jobs:
           python-version: "3.10"
       - run: pip install -e . --no-deps
       - run: pip install "PySide6==6.6.0" "yt-dlp==2024.1.1" "pytest==${{ matrix.pytest_version }}"
-      - run: pytest tests/test_downloader.py -v
-        continue-on-error: true
+      - name: Run tests
+        run: |
+          if pytest tests/test_downloader.py -v; then
+            echo "PASS — pytest ${{ matrix.pytest_version }}" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "FAIL — pytest ${{ matrix.pytest_version }}" >> "$GITHUB_STEP_SUMMARY"
+          fi

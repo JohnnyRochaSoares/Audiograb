@@ -18,5 +18,10 @@ jobs:
           python-version: "3.10"
       - run: pip install -e . --no-deps
       - run: pip install "PySide6==${{ matrix.pyside6_version }}" "yt-dlp==2024.1.1" "pytest==8.0.0"
-      - run: pytest tests/ -v
-        continue-on-error: true
+      - name: Run tests
+        run: |
+          if pytest tests/ -v; then
+            echo "PASS — PySide6 ${{ matrix.pyside6_version }}" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "FAIL — PySide6 ${{ matrix.pyside6_version }}" >> "$GITHUB_STEP_SUMMARY"
+          fi
