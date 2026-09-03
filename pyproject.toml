@@ -11,13 +11,13 @@ license = { text = "GPL-3.0-or-later" }
 requires-python = ">=3.10"
 
 dependencies = [
-    "yt-dlp>=2021.2.24,!=2021.6.1,!=2021.6.9,!=2021.6.23,!=2021.7.7,!=2021.7.21",
-    "PySide6>=6.3.0",
+    "yt-dlp>=2022.5.18",
+    "PySide6>=6.10.1",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=6.3.0"
+    "pytest>=7.3.2"
 ]
 
 [tool.setuptools.packages.find]
