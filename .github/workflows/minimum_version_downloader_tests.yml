@@ -1,4 +1,4 @@
-name: Downloader Minimum Version Tests
+name: downloader.py Minimum Version Tests
 
 on:
   push:
