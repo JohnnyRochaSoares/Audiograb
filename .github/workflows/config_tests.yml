@@ -1,4 +1,4 @@
-name: Tests
+name: config.py Tests
 
 on:
   push:

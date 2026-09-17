@@ -1,4 +1,4 @@
-name: Minimum Version Tests
+name: Downloader Minimum Version Tests
 
 on:
   push:

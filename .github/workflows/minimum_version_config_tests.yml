@@ -1,4 +1,4 @@
-name: Minimum Version Tests
+name: config.py Minimum Version Tests
 
 on:
   push:
